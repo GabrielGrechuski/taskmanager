@@ -10,19 +10,19 @@ public class ConsoleUI {
             showMenu();
             int optionMenu = readOption();
 
-            if(optionMenu == 1){
+            if (optionMenu == 1) {
                 System.out.println("Option 1 selected!");
             }
-            else if(optionMenu == 2){
-                    System.out.println("Option 2 selected!");
+            else if (optionMenu == 2) {
+                System.out.println("Option 2 selected!");
             }
-            else if(optionMenu == 3){
+            else if (optionMenu == 3) {
                 System.out.println("Option 3 selected!");
             }
-            else if(optionMenu == 4){
+            else if (optionMenu == 4) {
                 System.out.println("Option 4 selected!");
             }
-            else if(optionMenu == 0){
+            else if (optionMenu == 0) {
                 System.out.println("Option 0 selected!");
             }
             else {
