@@ -22,4 +22,9 @@ public class Task {
     public void setDescription(String description){ this.description = description; }
     public Boolean getCompleted(){ return completed; }
     public void setCompleted(Boolean completed){ this.completed = completed; }
+
+    @Override
+    public String toString(){
+        return "ID: " + getId() + " - Description: " + getDescription() + " - Completed: " + String.valueOf(getCompleted());
+    }
 }

@@ -1,33 +1,50 @@
 package com.ggrechuski.taskmanager.ui;
 
+import com.ggrechuski.taskmanager.repository.TaskRepository;
+import com.ggrechuski.taskmanager.service.TaskService;
+
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleUI {
     // Manage the methods with base in the user's choice
     public void start() {
-        while (true) {
-            showMenu();
-            int optionMenu = readOption();
+        Scanner sc = new Scanner(System.in);
 
-            if (optionMenu == 1) {
-                System.out.println("Option 1 selected!");
+        try {
+            TaskService service = new TaskService(new TaskRepository());
+
+            while (true) {
+                showMenu();
+                int optionMenu = readOption();
+
+                if (optionMenu == 1) {
+                    System.out.println("1 - Add Task:");
+                    System.out.print("Description: ");
+                    service.addTask(sc.nextLine());
+                    System.out.println("\nTask add!\n");
+                }
+                else if (optionMenu == 2) {
+                    System.out.println("2 - List of Tasks:\n");
+                    System.out.println(service.listTasks());
+                }
+                else if (optionMenu == 3) {
+                    System.out.println("Option 3 selected!");
+                }
+                else if (optionMenu == 4) {
+                    System.out.println("Option 4 selected!");
+                }
+                else if (optionMenu == 0) {
+                    System.out.println("Thank you! See you later");
+                    break;
+                }
+                else {
+                    System.out.println("Invalid Option! Please, enter with a valid option!");
+                }
             }
-            else if (optionMenu == 2) {
-                System.out.println("Option 2 selected!");
-            }
-            else if (optionMenu == 3) {
-                System.out.println("Option 3 selected!");
-            }
-            else if (optionMenu == 4) {
-                System.out.println("Option 4 selected!");
-            }
-            else if (optionMenu == 0) {
-                System.out.println("Option 0 selected!");
-            }
-            else {
-                System.out.println("Invalid Option! Please, enter with a valid option!");
-            }
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());;
         }
     }
 
